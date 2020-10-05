@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "fhirclient"
+            ],
             "outputPath": "dist/pain-manager-ng",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -123,6 +126,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "pain-manager-ng"
 }
