@@ -21,6 +21,7 @@ export class LaunchComponent implements OnInit {
   }
 
   receiveFHIRPatient() {
+    //TODO: Procedure, Encounter, QuestionnaireResponse, Condition, MedicationStatement, MedicationRequest, Observation, ANY MORE
     SMART.init({
       iss: "https://launcher-develop.sandbox.alphora.com/v/r4/fhir",
       clientId: "6c12dff4-24e7-4475-a742-b08972c4ea27",
