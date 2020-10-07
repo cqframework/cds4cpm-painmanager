@@ -30,33 +30,25 @@ export class LaunchComponent implements OnInit {
     }).then(function(client) {
 
       // localStorage.setItem('client', JSON.stringify(client))
-      console.log('patient: ', client)
       return Promise.all([
         client.patient.read().then(function(patient) {
           console.log('patient: ', patient)
         }),
-        client.request(`/MedicationRequest?patient=${client.patient.id}`, {
+        client.patient.request(`MedicationRequest`, {
           resolveReferences: "medicationReference",
           pageLimit: 0,
           flat: true
         }).then(function(response) {
           console.log('med response: ', response);
         }),
-        client.request(`/Observation?patient=${client.patient.id}`, {
+        client.patient.request(`Observation`, {
           // resolveReferences: "medicationReference",
           pageLimit: 0,
           flat: true
         }).then(function(response) {
           console.log('obs response: ', response);
         }),
-        client.request(`/QuestionnaireResponse?patient=${client.patient.id}`, {
-          // resolveReferences: "medicationReference",
-          pageLimit: 0,
-          flat: true
-        }).then(function(response) {
-          console.log('Q response: ', response);
-        }),
-        client.request(`/Condition?patient=${client.patient.id}`, {
+        client.patient.request(`Condition`, {
           // resolveReferences: "medicationReference",
           pageLimit: 0,
           flat: true
